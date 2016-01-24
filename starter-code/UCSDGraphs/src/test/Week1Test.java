@@ -7,7 +7,7 @@ import org.junit.Test;
 import basicgraph.Graph;
 import basicgraph.GraphAdjMatrix;
 
-public class GraphAdjMatrixTest {
+public class Week1Test {
 
 	private void showMatrix(int[][] values) {
 		for (int i = 0; i < values.length; i++) {
@@ -17,7 +17,7 @@ public class GraphAdjMatrixTest {
 			System.out.print("\n");
 		}
 	}
-
+	
 	@Test
 	public void test() {
 		
@@ -29,13 +29,17 @@ public class GraphAdjMatrixTest {
 		g.addVertex();
 		g.addVertex();
 		
-		g.addEdge(0, 0);
-		g.addEdge(0, 0);
-		g.addEdge(0, 1);
-		g.addEdge(0, 2);
-		g.addEdge(0, 3);
-		g.addEdge(0, 4);
 		g.addEdge(1, 2);
+		g.addEdge(1, 3);
+		g.addEdge(2, 1);
+		g.addEdge(2, 3);
+		g.addEdge(3, 0);
+		g.addEdge(3, 2);
+		g.addEdge(3, 3);
+		g.addEdge(4, 0);
+		g.addEdge(4, 1);
+		g.addEdge(4, 3);
+		g.addEdge(4, 4);
 		
 		System.out.println(g.getNumVertices());
 		System.out.println(g.getNumEdges());
