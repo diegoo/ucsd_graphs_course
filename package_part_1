@@ -1,0 +1,2 @@
+#!/bin/bash
+cp starter-code/UCSDGraphs/src/basicgraph/{Graph.java,GraphAdjList.java,GraphAdjMatrix.java} . && zip part_1.zip Graph.java GraphAdjList.java GraphAdjMatrix.java && rm Graph.java GraphAdjList.java GraphAdjMatrix.java
