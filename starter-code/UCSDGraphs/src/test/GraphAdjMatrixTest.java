@@ -9,6 +9,15 @@ import basicgraph.GraphAdjMatrix;
 
 public class GraphAdjMatrixTest {
 
+	private void showMatrix(int[][] values) {
+		for (int i = 0; i < values.length; i++) {
+			for (int j = 0; j < values.length; j++) {
+				System.out.print(values[i][j] + " ");
+			}
+			System.out.print("\n");
+		}
+	}
+
 	@Test
 	public void test() {
 		
@@ -45,6 +54,22 @@ public class GraphAdjMatrixTest {
 		}
 		
 		System.out.println(g.degreeSequence());
+				
+		int[][] m = { 
+				{ 1, 2 }, 
+				{ 4, 5 }
+		};
+
+		/** para multiplicar matrices */
+		int [][] result = new int[m.length][m[0].length];
+		for (int i = 0; i < m.length; i++) { 
+		    for (int j = 0; j < m[0].length; j++) { 
+		        for (int k = 0; k < m[0].length; k++) { 
+		            result[i][j] += m[i][k] * m[k][j];
+		        }
+		    }
+		}
+		showMatrix(result);
 		
 		assertEquals(1L, 1L);
 	}
