@@ -101,9 +101,17 @@ public class MapGraph {
 			double length) throws IllegalArgumentException {
 
 		//TODO: Implement this method in WEEK 2
+		if (from == null || to == null) {
+			throw new IllegalArgumentException("arguments are null");
+		}
+		
 		MapVertex start = vertices.get(from);
 		MapVertex end = vertices.get(to);
 
+		if (start == null || end == null) {
+			throw new IllegalArgumentException("points have not already been added as nodes to the graph");
+		}
+		
 		MapEdge edge = new MapEdge.Builder(start, end)
 				.roadName(roadName)
 				.roadType(roadType)

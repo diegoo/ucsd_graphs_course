@@ -8,6 +8,9 @@ import java.util.List;
 
 import geography.GeographicPoint;
 
+/** keep updates to the path during search, so that 
+ * steps can be traced back from goal to start 
+ * when goal is reached **/ 
 public class Ancestors {
 
 	private HashMap<MapVertex, MapVertex> child2parent;

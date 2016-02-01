@@ -14,7 +14,7 @@ public class MapVertex {
 		this.location = location;
 		this.edges = new HashSet<MapEdge>();
 	}
-		
+	
 	public void addEdge(MapEdge edge) {
 		edges.add(edge);
 	}
