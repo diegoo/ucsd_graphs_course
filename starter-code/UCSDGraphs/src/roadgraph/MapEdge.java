@@ -1,96 +1,116 @@
+/**
+ * 
+ */
 package roadgraph;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import geography.GeographicPoint;
 
-public class MapEdge {
-	
-	private final MapVertex start;
-	private final MapVertex end;
+/**
+ * @author UCSD Intermediate Programming MOOC team
+ *
+ * A directed edge in a map graph from Node start to Node end
+ */
+class MapEdge 
+{
+	/** The name of the road */
 	private String roadName;
+	
+	/** The type of the road */
 	private String roadType;
-	private double length = 0.1;
-
-	public MapEdge(MapVertex start, MapVertex end, String roadName, String roadType, double length) {
-		this.start = start;
-		this.end = end;
+	
+	/** The two endpoints of the edge */
+	private MapNode start;
+	private MapNode end;
+	
+	
+	/** The length of the road segment, in km */
+	private double length;
+	
+	static final double DEFAULT_LENGTH = 0.01;
+	
+	
+	/** Create a new MapEdge object
+	 * 
+	 * @param roadName
+	 * @param n1  The point at one end of the segment
+	 * @param n2  The point at the other end of the segment
+	 * 
+	 */
+	MapEdge(String roadName, MapNode n1, MapNode n2) 
+	{
+		this(roadName, "", n1, n2, DEFAULT_LENGTH);
+	}
+	
+	MapEdge(String roadName, String roadType, MapNode n1, MapNode n2) 
+	{
+		this(roadName, roadType, n1, n2, DEFAULT_LENGTH);
+	}
+	
+	MapEdge(String roadName, String roadType,
+			MapNode n1, MapNode n2, double length) 
+	{
 		this.roadName = roadName;
+		start = n1;
+		end = n2;
 		this.roadType = roadType;
 		this.length = length;
 	}
 	
-	public static class Builder {
-		
-		private final MapVertex start;
-		private final MapVertex end;
-		private String roadName;
-		private String roadType;
-		private double length = 0.1;
-	
-		public 	Builder(MapVertex start, MapVertex end) {
-			this.start = start;
-			this.end = end;
-		}
-		
-		public Builder roadName(String roadName) {
-			this.roadName = roadName;
-			return this;
-		}
-		
-		public Builder roadType(String roadType) {
-			this.roadType = roadType;
-			return this;
-		}
-		
-		public Builder length(double length) {
-			this.length = length;
-			return this;
-		}
-		
-		public MapEdge build() {
-			return new MapEdge(this);
-		}
-	}
-
-	private MapEdge(MapEdge.Builder builder) {
-		this.roadName = builder.roadName;
-		this.start = builder.start;
-		this.end = builder.end;
-		this.roadType = builder.roadType;
-		this.length = builder.length;
-	}
-
-	public MapVertex getEndNode() {
+	// return the MapNode for the end point
+	MapNode getEndNode() {
 	   return end;
 	}
 	
-	public GeographicPoint getStartPoint() {
+	// return the location of the start point
+	GeographicPoint getStartPoint()
+	{
 		return start.getLocation();
 	}
 	
-	public GeographicPoint getEndPoint() {
+	// return the location of the end point
+	GeographicPoint getEndPoint()
+	{
 		return end.getLocation();
 	}
 	
-	public double getLength() {
+	// return the length
+	double getLength()
+	{
 		return length;
 	}
 	
-	public String getRoadName() {
+	
+	
+	// return road name
+	public String getRoadName()
+	{
 		return roadName;
 	}
 	
-	public MapVertex getOtherNode(MapVertex node) {
-		if (node.equals(start)) {
+	// given one node in an edge, return the other node
+	MapNode getOtherNode(MapNode node)
+	{
+		if (node.equals(start)) 
 			return end;
-		} else if (node.equals(end)) {
+		else if (node.equals(end))
 			return start;
-		}
-		throw new IllegalArgumentException("wrong point for this edge");
+		throw new IllegalArgumentException("Looking for " +
+			"a point that is not in the edge");
 	}
 	
-	@Override
-	public String toString() {
-		return "(" + start.getLocation() + ", " + end.getLocation() + ", " + roadName + ", " + roadType + ", " + String.format("%.3g", length) + " km" + ")";
+	// return String containing details about the edge
+	public String toString()
+	{
+		String toReturn = "[EDGE between ";
+		toReturn += " " + start.getLocation();
+		toReturn += " " + end.getLocation();
+//		toReturn += "\nRoad name: " + roadName + " Road type: " + roadType +
+//				" Segment length: " + String.format("%.3g", length) + "km";
+		toReturn += " length: " + String.format("%.3g", length) + "km ]";
+		return toReturn;
 	}
 
 }

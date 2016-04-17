@@ -1,0 +1,88 @@
+map: 9 vertices 22 edges
+start: [NODE at location (Lat: 1.0, Lon: 1.0)] neighbors: [[NODE at location (Lat: 4.0, Lon: 1.0)]]
+goal: [NODE at location (Lat: 8.0, Lon: -1.0)]
+
+queue: [[NODE at location (Lat: 1.0, Lon: 1.0)]]
+visiting: [NODE at location (Lat: 1.0, Lon: 1.0)]
+exploring edge: [EDGE between  Lat: 1.0, Lon: 1.0 Lat: 4.0, Lon: 1.0 length: 334km ]
+currentDistance: 333.6894996887958 is shorter than neighbor.distance: Infinity
+set distance: 333.6894996887958 to neighbor: [NODE at location (Lat: 4.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 4.0, Lon: 1.0)]]
+visiting: [NODE at location (Lat: 4.0, Lon: 1.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 4.0, Lon: 0.0 length: 111km ]
+currentDistance: 444.64837578192805 is shorter than neighbor.distance: Infinity
+set distance: 444.64837578192805 to neighbor: [NODE at location (Lat: 4.0, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 1.0, Lon: 1.0 length: 334km ]
+already explored [NODE at location (Lat: 1.0, Lon: 1.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 7.0, Lon: 3.0 length: 400km ]
+currentDistance: 734.1527378221836 is shorter than neighbor.distance: Infinity
+set distance: 734.1527378221836 to neighbor: [NODE at location (Lat: 7.0, Lon: 3.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 4.0, Lon: 2.0 length: 111km ]
+currentDistance: 444.64837578192805 is shorter than neighbor.distance: Infinity
+set distance: 444.64837578192805 to neighbor: [NODE at location (Lat: 4.0, Lon: 2.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 5.0, Lon: 1.0 length: 111km ]
+currentDistance: 444.91933291839445 is shorter than neighbor.distance: Infinity
+set distance: 444.91933291839445 to neighbor: [NODE at location (Lat: 5.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 4.0, Lon: 0.0)], [NODE at location (Lat: 5.0, Lon: 1.0)], [NODE at location (Lat: 4.0, Lon: 2.0)], [NODE at location (Lat: 7.0, Lon: 3.0)]]
+visiting: [NODE at location (Lat: 4.0, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 0.0 Lat: 4.0, Lon: 1.0 length: 111km ]
+already explored [NODE at location (Lat: 4.0, Lon: 1.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 0.0 Lat: 5.0, Lon: 1.0 length: 157km ]
+nope, neighbor.distance 444.91933291839445 is longer than currentDist: 601.707827439212
+exploring edge: [EDGE between  Lat: 4.0, Lon: 0.0 Lat: 4.0, Lon: -1.0 length: 111km ]
+currentDistance: 555.6072518750602 is shorter than neighbor.distance: Infinity
+set distance: 555.6072518750602 to neighbor: [NODE at location (Lat: 4.0, Lon: -1.0)]
+
+queue: [[NODE at location (Lat: 4.0, Lon: 2.0)], [NODE at location (Lat: 5.0, Lon: 1.0)], [NODE at location (Lat: 7.0, Lon: 3.0)], [NODE at location (Lat: 4.0, Lon: -1.0)]]
+visiting: [NODE at location (Lat: 4.0, Lon: 2.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 2.0 Lat: 4.0, Lon: 1.0 length: 111km ]
+already explored [NODE at location (Lat: 4.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 5.0, Lon: 1.0)], [NODE at location (Lat: 4.0, Lon: -1.0)], [NODE at location (Lat: 7.0, Lon: 3.0)]]
+visiting: [NODE at location (Lat: 5.0, Lon: 1.0)]
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 4.0, Lon: 0.0 length: 157km ]
+already explored [NODE at location (Lat: 4.0, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 6.5, Lon: 0.0 length: 200km ]
+currentDistance: 645.1300615327015 is shorter than neighbor.distance: Infinity
+set distance: 645.1300615327015 to neighbor: [NODE at location (Lat: 6.5, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 4.0, Lon: 1.0 length: 111km ]
+already explored [NODE at location (Lat: 4.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 4.0, Lon: -1.0)], [NODE at location (Lat: 7.0, Lon: 3.0)], [NODE at location (Lat: 6.5, Lon: 0.0)]]
+visiting: [NODE at location (Lat: 4.0, Lon: -1.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: -1.0 Lat: 4.0, Lon: 0.0 length: 111km ]
+already explored [NODE at location (Lat: 4.0, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 4.0, Lon: -1.0 Lat: 8.0, Lon: -1.0 length: 445km ]
+currentDistance: 1000.5265847934547 is shorter than neighbor.distance: Infinity
+set distance: 1000.5265847934547 to neighbor: [NODE at location (Lat: 8.0, Lon: -1.0)]
+
+queue: [[NODE at location (Lat: 6.5, Lon: 0.0)], [NODE at location (Lat: 7.0, Lon: 3.0)], [NODE at location (Lat: 8.0, Lon: -1.0)]]
+visiting: [NODE at location (Lat: 6.5, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 6.5, Lon: 0.0 Lat: 8.0, Lon: -1.0 length: 200km ]
+currentDistance: 845.1587403818543 is shorter than neighbor.distance: 1000.5265847934547
+set distance: 845.1587403818543 to neighbor: [NODE at location (Lat: 8.0, Lon: -1.0)]
+exploring edge: [EDGE between  Lat: 6.5, Lon: 0.0 Lat: 5.0, Lon: 1.0 length: 200km ]
+already explored [NODE at location (Lat: 5.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 7.0, Lon: 3.0)], [NODE at location (Lat: 8.0, Lon: -1.0)], [NODE at location (Lat: 8.0, Lon: -1.0)]]
+visiting: [NODE at location (Lat: 7.0, Lon: 3.0)]
+exploring edge: [EDGE between  Lat: 7.0, Lon: 3.0 Lat: 8.0, Lon: -1.0 length: 455km ]
+nope, neighbor.distance 845.1587403818543 is longer than currentDist: 1189.0661347710984
+exploring edge: [EDGE between  Lat: 7.0, Lon: 3.0 Lat: 4.0, Lon: 1.0 length: 400km ]
+already explored [NODE at location (Lat: 4.0, Lon: 1.0)]
+
+queue: [[NODE at location (Lat: 8.0, Lon: -1.0)], [NODE at location (Lat: 8.0, Lon: -1.0)]]
+visiting: [NODE at location (Lat: 8.0, Lon: -1.0)]
+exploring edge: [EDGE between  Lat: 8.0, Lon: -1.0 Lat: 4.0, Lon: -1.0 length: 445km ]
+already explored [NODE at location (Lat: 4.0, Lon: -1.0)]
+exploring edge: [EDGE between  Lat: 8.0, Lon: -1.0 Lat: 6.5, Lon: 0.0 length: 200km ]
+already explored [NODE at location (Lat: 6.5, Lon: 0.0)]
+exploring edge: [EDGE between  Lat: 8.0, Lon: -1.0 Lat: 7.0, Lon: 3.0 length: 455km ]
+already explored [NODE at location (Lat: 7.0, Lon: 3.0)]
+
+queue: [[NODE at location (Lat: 8.0, Lon: -1.0)]]
+visiting: [NODE at location (Lat: 8.0, Lon: -1.0)]
+total nodes visited: 10
+route Dijkstra: [Lat: 1.0, Lon: 1.0, Lat: 4.0, Lon: 1.0, Lat: 5.0, Lon: 1.0, Lat: 6.5, Lon: 0.0, Lat: 8.0, Lon: -1.0]

@@ -108,7 +108,33 @@ public class GraphAdjMatrix extends Graph {
 	 * @return List<Integer> a list of indices of vertices.  
 	 */	
 	public List<Integer> getDistance2(int v) {
-		return null;
+		/**
+		 * For the matrix representation, getDistance2(int v) can be implemented
+		 * with matrix multiplication (square the matrix then read the non-zero
+		 * entries from the appropriate row).
+		 */
+		
+		List<Integer> twoHopsVertices = new ArrayList<>();
+		
+		int rows = adjMatrix.length;
+		int columns = adjMatrix.length;
+		int[][] multiplicationMatrix = new int[rows][columns];
+		
+		for (int r = 0; r < rows; r++) {
+			for (int c = 0; c < columns; c++) {
+				for (int k = 0; k < rows; k++) {
+					multiplicationMatrix[r][c] += adjMatrix[r][k] * adjMatrix[k][c];
+				}
+			}
+		}
+		for(int c = 0; c < columns; c++) {
+			if (multiplicationMatrix[v][c] > 0) {
+				for(int j = 0; j < multiplicationMatrix[v][c]; j++) {
+					twoHopsVertices.add(c);
+				}
+			}
+		}
+		return twoHopsVertices;
 	}
 	
 	/**
