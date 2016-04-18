@@ -1,0 +1,65 @@
+map: 9 vertices 22 edges
+start: [NODE at location (Lat: 1.0, Lon: 1.0) distance: 0.0] neighbors: [[NODE at location (Lat: 4.0, Lon: 1.0) distance: 0.0]]
+goal: [NODE at location (Lat: 8.0, Lon: -1.0) distance: 0.0]
+
+queue: [[NODE at location (Lat: 1.0, Lon: 1.0) distance: 0.0]]
+visiting: [NODE at location (Lat: 1.0, Lon: 1.0) distance: 0.0]
+exploring edge: [EDGE between  Lat: 1.0, Lon: 1.0 Lat: 4.0, Lon: 1.0 length: 334km ]
+currentDist: 333.6894996887958
+distanceToGoal: 830.5599063915854
+distanceToGoal: 830.5599063915854 is shorter than neighbor.distance: Infinity
+set neighbor distance: 830.5599063915854 actualDistance: 333.6894996887958
+
+queue: [[NODE at location (Lat: 4.0, Lon: 1.0) distance: 830.5599063915854]]
+visiting: [NODE at location (Lat: 4.0, Lon: 1.0) distance: 830.5599063915854]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 4.0, Lon: 0.0 length: 111km ]
+currentDist: 444.64837578192805
+distanceToGoal: 903.1077198182687
+distanceToGoal: 903.1077198182687 is shorter than neighbor.distance: Infinity
+set neighbor distance: 903.1077198182687 actualDistance: 444.64837578192805
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 1.0, Lon: 1.0 length: 334km ]
+already explored [NODE at location (Lat: 1.0, Lon: 1.0) distance: 0.0]
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 7.0, Lon: 3.0 length: 400km ]
+currentDist: 734.1527378221836
+distanceToGoal: 1189.0661347710984
+distanceToGoal: 1189.0661347710984 is shorter than neighbor.distance: Infinity
+set neighbor distance: 1189.0661347710984 actualDistance: 734.1527378221836
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 4.0, Lon: 2.0 length: 111km ]
+currentDist: 444.64837578192805
+distanceToGoal: 999.6607921630457
+distanceToGoal: 999.6607921630457 is shorter than neighbor.distance: Infinity
+set neighbor distance: 999.6607921630457 actualDistance: 444.64837578192805
+exploring edge: [EDGE between  Lat: 4.0, Lon: 1.0 Lat: 5.0, Lon: 1.0 length: 111km ]
+currentDist: 444.91933291839445
+distanceToGoal: 845.158179026794
+distanceToGoal: 845.158179026794 is shorter than neighbor.distance: Infinity
+set neighbor distance: 845.158179026794 actualDistance: 444.91933291839445
+
+queue: [[NODE at location (Lat: 5.0, Lon: 1.0) distance: 845.158179026794], [NODE at location (Lat: 4.0, Lon: 0.0) distance: 903.1077198182687], [NODE at location (Lat: 4.0, Lon: 2.0) distance: 999.6607921630457], [NODE at location (Lat: 7.0, Lon: 3.0) distance: 1189.0661347710984]]
+visiting: [NODE at location (Lat: 5.0, Lon: 1.0) distance: 845.158179026794]
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 4.0, Lon: 0.0 length: 157km ]
+currentDist: 601.9787845756783
+distanceToGoal: 1060.438128612019
+neighbor.distance 903.1077198182687 is shorter than distanceToGoal: 1060.438128612019
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 6.5, Lon: 0.0 length: 200km ]
+currentDist: 645.1300615327015
+distanceToGoal: 845.1587403818543
+distanceToGoal: 845.1587403818543 is shorter than neighbor.distance: Infinity
+set neighbor distance: 845.1587403818543 actualDistance: 645.1300615327015
+exploring edge: [EDGE between  Lat: 5.0, Lon: 1.0 Lat: 4.0, Lon: 1.0 length: 111km ]
+already explored [NODE at location (Lat: 4.0, Lon: 1.0) distance: 830.5599063915854]
+
+queue: [[NODE at location (Lat: 6.5, Lon: 0.0) distance: 845.1587403818543], [NODE at location (Lat: 4.0, Lon: 0.0) distance: 903.1077198182687], [NODE at location (Lat: 4.0, Lon: 2.0) distance: 999.6607921630457], [NODE at location (Lat: 7.0, Lon: 3.0) distance: 1189.0661347710984]]
+visiting: [NODE at location (Lat: 6.5, Lon: 0.0) distance: 845.1587403818543]
+exploring edge: [EDGE between  Lat: 6.5, Lon: 0.0 Lat: 8.0, Lon: -1.0 length: 200km ]
+currentDist: 845.1587403818543
+distanceToGoal: 845.1587403818543
+distanceToGoal: 845.1587403818543 is shorter than neighbor.distance: Infinity
+set neighbor distance: 845.1587403818543 actualDistance: 845.1587403818543
+exploring edge: [EDGE between  Lat: 6.5, Lon: 0.0 Lat: 5.0, Lon: 1.0 length: 200km ]
+already explored [NODE at location (Lat: 5.0, Lon: 1.0) distance: 845.158179026794]
+
+queue: [[NODE at location (Lat: 8.0, Lon: -1.0) distance: 845.1587403818543], [NODE at location (Lat: 4.0, Lon: 0.0) distance: 903.1077198182687], [NODE at location (Lat: 4.0, Lon: 2.0) distance: 999.6607921630457], [NODE at location (Lat: 7.0, Lon: 3.0) distance: 1189.0661347710984]]
+visiting: [NODE at location (Lat: 8.0, Lon: -1.0) distance: 845.1587403818543]
+total nodes visited: 5
+[Lat: 1.0, Lon: 1.0, Lat: 4.0, Lon: 1.0, Lat: 5.0, Lon: 1.0, Lat: 6.5, Lon: 0.0, Lat: 8.0, Lon: -1.0]
