@@ -3,16 +3,20 @@
  */
 package roadgraph;
 
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Consumer;
+
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 import geography.GeographicPoint;
 import util.GraphLoader;
@@ -464,10 +468,7 @@ public class MapGraph {
 		return path;
 	}
 
-
-	// main method for testing
-	public static void main(String[] args)
-	{		
+	private static void runDijkstra() {
 		MapGraph map = new MapGraph();
 		GraphLoader.loadRoadMap("data/testdata/simpletest.map", map);
 		System.out.print("map: " + map.getNumVertices() + " vertices " + map.getNumEdges() + " edges\n");
@@ -489,6 +490,14 @@ public class MapGraph {
 		assert routeDijkstra.get(3).getY() == 0.0;
 		assert routeDijkstra.get(4).getX() == 8.0;
 		assert routeDijkstra.get(4).getY() == -1.0;
+	}
+	
+	private static void runAStar() {
+		MapGraph map = new MapGraph();
+		GraphLoader.loadRoadMap("data/testdata/simpletest.map", map);
+		System.out.print("map: " + map.getNumVertices() + " vertices " + map.getNumEdges() + " edges\n");
+		GeographicPoint start = new GeographicPoint(1.0, 1.0);
+		GeographicPoint end = new GeographicPoint(8.0, -1.0);
 
 		/** A* */
 		List<GeographicPoint> routeAStar = map.aStarSearch(start, end);
@@ -504,8 +513,10 @@ public class MapGraph {
 		assert routeAStar.get(3).getX() == 6.5;
 		assert routeAStar.get(3).getY() == 0.0;
 		assert routeAStar.get(4).getX() == 8.0;
-		assert routeAStar.get(4).getY() == -1.0;
+		assert routeAStar.get(4).getY() == -1.0;	
+	}
 	
+	private static void runWeek3Quiz() {
 		/** Week 3 End of Week Quiz */
 		MapGraph theMap = new MapGraph();
 		GraphLoader.loadRoadMap("data/maps/utc.map", theMap);
@@ -517,6 +528,97 @@ public class MapGraph {
 		System.out.println(route);
 		List<GeographicPoint> route2 = theMap.aStarSearch(startUTC,endUTC);
 		System.out.println(route2);
+	}
+
+	private static void runGreedyTSP() {
+		MapGraph map = new MapGraph();
+		GraphLoader.loadRoadMap("data/testdata/simpletest.map", map);
+		System.out.print("map: " + map.getNumVertices() + " vertices " + map.getNumEdges() + " edges\n");
+		GeographicPoint start = new GeographicPoint(1.0, 1.0);
+
+		Set<GeographicPoint> points = new HashSet<GeographicPoint>();
+		points.add(new GeographicPoint(1.0, 1.0));
+		points.add(new GeographicPoint(7.0, 3.0));
+		points.add(new GeographicPoint(8.0, -1.0));
+		
+		List<GeographicPoint> route = map.greedyTSP(start);
+		System.out.println("\ntour: " + route);
+	}
+	
+	public List<GeographicPoint> greedyTSP(GeographicPoint start) {
+		
+		/** validate parameters */
+		Set<MapNode> vertices = Sets.newHashSet(pointNodeMap.values());
+		if (start == null || vertices.isEmpty()) {
+			throw new NullPointerException("missing start or vertices");
+		}
+		
+		MapNode startVertex = pointNodeMap.get(start);
+		
+		/** initialize collections */
+		List<GeographicPoint> path = new ArrayList<GeographicPoint>();
+		path.add(startVertex.getLocation());
+		Set<MapNode> visited = new HashSet<MapNode>();
+		visited.add(startVertex);
+		Set<MapNode> unvisited = new HashSet<MapNode>();
+		unvisited.addAll(vertices);
+		unvisited.remove(startVertex);
+		
+		/** iterate over vertices, 
+		 *  adding the nearest at each step, until all
+		 *  have been visited
+		 */
+		MapNode current = startVertex;
+		while (true) {
+			Set<MapNode> visitable = new HashSet<MapNode>();
+			visitable.addAll(unvisited);
+			visitable.remove(current);
+			if (visitable.isEmpty()) {
+				path.add(startVertex.getLocation());
+				break;
+			}
+			Entry<MapNode, Double> nearestVertex = findNearest(current, visitable);
+			unvisited.remove(current);
+			visited.add(nearestVertex.getKey());
+			path.add(nearestVertex.getKey().getLocation());
+			current = nearestVertex.getKey();
+		}
+
+		return path;
+	}
+	
+	private Entry<MapNode, Double> findNearest(MapNode current, Set<MapNode> neighbors) {
+		Map<MapNode, Double> vertexDistances = Maps.newHashMap();
+		for (MapNode n : neighbors) {
+			vertexDistances.put(n, n.distanceFrom(current));
+		}
+		return findMin(vertexDistances);
+	}
+
+	private Entry<MapNode, Double> findMin(Map<MapNode, Double> map) {
+		Entry<MapNode, Double> min = null;
+		for (Entry<MapNode, Double> entry : map.entrySet()) {
+		    if (min == null || min.getValue() > entry.getValue()) {
+		        min = entry;
+		    }
+		}
+		return min;
+	}
+
+	private void pressAnyKeyToContinue() { 
+		System.out.println("Press any key to continue...");
+		try {
+			System.in.read();
+		}  
+		catch(Exception e) {}  
+	}
+	
+	/** main method for testing */
+	public static void main(String[] args) {
+//		runDijkstra();
+//		runAStar();
+//		runWeek3Quiz();
+		runGreedyTSP();
 	}
 
 }
