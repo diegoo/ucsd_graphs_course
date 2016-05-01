@@ -534,13 +534,7 @@ public class MapGraph {
 		MapGraph map = new MapGraph();
 		GraphLoader.loadRoadMap("data/testdata/simpletest.map", map);
 		System.out.print("map: " + map.getNumVertices() + " vertices " + map.getNumEdges() + " edges\n");
-		GeographicPoint start = new GeographicPoint(1.0, 1.0);
-
-		Set<GeographicPoint> points = new HashSet<GeographicPoint>();
-		points.add(new GeographicPoint(1.0, 1.0));
-		points.add(new GeographicPoint(7.0, 3.0));
-		points.add(new GeographicPoint(8.0, -1.0));
-		
+		GeographicPoint start = new GeographicPoint(1.0, 1.0);		
 		List<GeographicPoint> route = map.greedyTSP(start);
 		System.out.println("\ntour: " + route);
 	}
