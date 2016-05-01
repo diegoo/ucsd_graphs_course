@@ -572,10 +572,8 @@ public class MapGraph {
 				path.add(startVertex.getLocation());
 				break;
 			}
+			
 			Entry<MapNode, Double> nearestVertex = findNearest(current, visitable);
-			if (null == nearestVertex) {
-				throw new NullPointerException("cannot find nearest vertex to " + current + " => no tour possible");
-			}
 			unvisited.remove(current);
 			visited.add(nearestVertex.getKey());
 			path.add(nearestVertex.getKey().getLocation());
