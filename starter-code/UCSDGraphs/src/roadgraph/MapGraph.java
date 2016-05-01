@@ -549,7 +549,7 @@ public class MapGraph {
 		
 		MapNode startVertex = pointNodeMap.get(start);
 		
-		/** initialize collections */
+		/** initialize collections: tour path, visited vertices, unvisited vertices */
 		List<GeographicPoint> path = new ArrayList<GeographicPoint>();
 		path.add(startVertex.getLocation());
 		Set<MapNode> visited = new HashSet<MapNode>();
@@ -558,9 +558,10 @@ public class MapGraph {
 		unvisited.addAll(vertices);
 		unvisited.remove(startVertex);
 		
-		/** iterate over vertices, 
-		 *  adding the nearest at each step, until all
-		 *  have been visited
+		/** iterate over vertices
+		 *  starting at given vertex 
+		 *  adding the nearest at each step 
+		 *  until all have been visited
 		 */
 		MapNode current = startVertex;
 		while (true) {
@@ -572,6 +573,9 @@ public class MapGraph {
 				break;
 			}
 			Entry<MapNode, Double> nearestVertex = findNearest(current, visitable);
+			if (null == nearestVertex) {
+				throw new NullPointerException("cannot find nearest vertex to " + current + " => no tour possible");
+			}
 			unvisited.remove(current);
 			visited.add(nearestVertex.getKey());
 			path.add(nearestVertex.getKey().getLocation());
@@ -582,16 +586,14 @@ public class MapGraph {
 	}
 	
 	private Entry<MapNode, Double> findNearest(MapNode current, Set<MapNode> neighbors) {
+		Entry<MapNode, Double> min = null;
+
 		Map<MapNode, Double> vertexDistances = Maps.newHashMap();
 		for (MapNode n : neighbors) {
 			vertexDistances.put(n, n.distanceFrom(current));
 		}
-		return findMin(vertexDistances);
-	}
 
-	private Entry<MapNode, Double> findMin(Map<MapNode, Double> map) {
-		Entry<MapNode, Double> min = null;
-		for (Entry<MapNode, Double> entry : map.entrySet()) {
+		for (Entry<MapNode, Double> entry : vertexDistances.entrySet()) {
 		    if (min == null || min.getValue() > entry.getValue()) {
 		        min = entry;
 		    }
