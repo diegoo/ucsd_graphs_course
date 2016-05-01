@@ -1,0 +1,39 @@
+My extension is the travelling salesperson problem.  In layman's terms, given a set of cities, a salesperson wants to start from the home city, and visit each of the cities exactly once, then finally return go back to the home city. My extension helps the salesperson find a reasonably optimal route to accomplish this.
+
+My extension is the travelling salesperson problem.  I used the greedy algorithm and the 2-opt algorithm to find a reasonably optimal route.  One problem is the 2-opt algorithm can get stuck in a local optima.  So instead of generating the initial route with the greedy algorithm, I also tried to randomize the cities to generate a random route as the initial route.
+
+--------------------------------------------------------------------------------
+
+The extension stores a shortest path from one node to another whenever it is calculated by the application. If the user searches for the same path more than once, instead of being recalculated over and over again it is fetched from the list of shortest paths that were requested previously - this allows us to decrease loading times for popular search queries.
+
+- A Path class has been created that stores a List<GeographicPoint> path from one node to another.
+- A HashSet<Path> field has been added to the MapGraph class to store all the previously computed paths.
+- The getPath() helper function that finds the path from start to goal, given a parentMap, has been modified to add the reconstructed path to the HashSet field if it isn't cached yet.
+One problem I've encountered here is creating a well-optimized solution to check if a path with specific start and goal nodes exists - I've solved this by implementing getStart() and getGoal() functions in the Path class and creating a custom comparator that considers two Path objects equal if their start and goal nodes are equal.
+- The shortest path algorithms (BFS, Dijkstra and A*) now attempt to look up a cached path from start to goal and, if it exists, return it instead of following through with the algorithm.
+
+--------------------------------------------------------------------------------
+This application enables users to find a solution to Traveling Salesman Problem(referred to as TSP, hereon). The problem is described as follows. Given a starting location and set of locations the user wants to visit, the application finds a route that connects all the locations by visiting each location only once provided such a route exists. The application assumes that all the locations have atleast one way with which it can be reached. If user provides an isolated location, which cannot be reached from starting location, the solution will not contain the isolated location.
+
+The application solves the problem using greedy approach. It picks the location which can be reached with shortest distance from current location and proceeds until either all locations are visited or till no further locations can be visited. The application attempts to provide an order with shortest distance but may have have the best possible solution.
+
+The project extension is an attempt to solve the Traveling Salesman Problem using Greedy Nearest Neighbor approach. There are two methods that have been added to MapGraph.java for this purpose. They are TspGreedy and findNextNode. TspGreedy is the main method which takes in a starting location and list of locations that has to be visited. It returns the List of locations that has the order in which locations can be visited. From the starting location, the method finds the nearest location from the list, that can be visited next using the findNextNode helper method. The order in which the locations to be visited is returned to the caller as a list.
+
+findNextNode method takes in a starting point and a list of locations yet to be visited. It returns the nearest location to the starting point among the yet to be visited locations  to the caller.
+
+The nearest neighbor heuristic is guaranteed to give a route that connects all the locations if there exists one but the route may or may not be optimal. The resulting solution may be used as a starting point for other constructive heuristics like 2-opt.
+
+--------------------------------------------------------------------------------
+
+MapGraph shortest path search algorithms that support a priority function for duration rather than just distance.   The algorithms use distance along with some assumptions regarding speed limits for the various road types found in OpenStreetMap to provide a priority function based on duration.  OpenStreetMap can be found at:  http://wiki.openstreetmap.org/wiki/Map_Features#Roads
+
+There are several modifications to the MapGraph package along with an addition that were made and created for the project.  The first was the realization that the various road types found in utc.map test data were from the OpenStreetMap project allowing for some rational assumptions for speed limits.  The link for OpenStreetMap is provided above.  The second was making modifications to the three classes, MapGraph, MapNode, and MapEdge.  
+
+For the road type, I created an enum that represented all the road types as well as speed limits for that type.  The speed limits were arrived at by consulting what type of road might the description found in utc.map represent.  An example road type would be unclassified.  The definition can be found in the link above but I assigned that road type a speed limit of 55 miles per hour.  I made similar assumptions about the other road types within the test data.  The enum also provides a method for calculating the duration based on the passed in distance.
+
+I modified the MapEdge class with an accessor to gain access to the road type field.  I also added a flag to the MapNode class that allows for the compareTo function to be based on the stored duration field added to the class.
+The algorithms found in the MapGraph class were modified to pass in duration to the MapNode class rather than distance.
+
+All these modifications were made while preserving the functionality (interfaces) of the UCSDGraphs package.
+
+--------------------------------------------------------------------------------
